@@ -3,10 +3,10 @@ from flask import request, jsonify, make_response
 
 def delete():
     if request.method == 'DELETE':
-        data = request.get_json()
-        if not data['id']:
+        data = request.args.get("id")
+        if not data:
             return make_response(jsonify({'message': 'Id is required'}), 400)
-        CURSOR.execute('DELETE FROM usuarios WHERE id = ?', (data['id'],))
+        CURSOR.execute('DELETE FROM usuarios WHERE id = ?', (data,))
         CONECTION.commit()
         return make_response(jsonify({'message': 'User deleted'}), 200)
     else:
