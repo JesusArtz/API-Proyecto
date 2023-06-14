@@ -4,7 +4,7 @@ import requests
 
 def index():
 
-    request = requests.get('http://0.0.0.0:7014/read')
+    request = requests.get('http://0.0.0.0:12345/read')
     dataDict = request.json()
 
     return render_template('index.html', data=dataDict)
