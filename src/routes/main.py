@@ -1,10 +1,17 @@
 from flask import render_template
 from __init__ import CONECTION, CURSOR
-import requests
+
 
 def index():
 
-    request = requests.get('http://0.0.0.0:12345/read')
-    dataDict = request.json()
+    CURSOR.execute(f"SELECT * FROM usuarios")
+    data = CURSOR.fetchall()
+    dataDict = {
+        Id: {
+            'name': name,
+            'age': edad
+        }
+        for Id, name, edad in data
+    }
 
     return render_template('index.html', data=dataDict)
