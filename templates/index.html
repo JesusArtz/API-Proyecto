@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Home</h1>
+    <!-- Create table to render a registers from database using flask template -->
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user_id, user_info in data.items() %}
+                <tr>
+                    <td>{{ user_id }}</td>
+                    <td>{{ user_info['name'] }}</td>
+                    <td>{{ user_info['age'] }}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    
+
+</body>
